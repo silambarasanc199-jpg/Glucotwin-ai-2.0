@@ -1,0 +1,9 @@
+.chart-empty[hidden]{display:none}
+.data-badge.stale{background:#fff2e5;color:#ae6c2d}
+@media(max-width:760px){
+  .content-grid{grid-template-columns:minmax(0,1fr)}
+  .content-grid>.panel,.main-content{min-width:0}
+  .chart-wrap,.chart-foot,.panel-heading{min-width:0}
+  .chart-wrap{overflow:hidden}
+  .chart-wrap canvas{max-width:100%}
+}

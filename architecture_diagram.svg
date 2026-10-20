@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="960" viewBox="0 0 1600 960" role="img" aria-labelledby="title desc">
+  <title id="title">GlucoTwin AI 2.0 system architecture</title>
+  <desc id="desc">Historical EHR context and synthetic wearable time series pass through validation, patient-twin state, temporal feature engineering, an offline-trained model and explainability service, then FastAPI, SQLite persistence and a responsive dashboard. Offline patient-group training and safety boundaries are shown.</desc>
+  <defs>
+    <linearGradient id="blue" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#1467b7"/><stop offset="1" stop-color="#1b9c9c"/></linearGradient>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M1 1L11 6L1 11" fill="none" stroke="#628099" stroke-width="1.8"/></marker>
+    <style>
+      .bg{fill:#f4f8fb}.title{font:700 33px Arial,sans-serif;fill:#17354d}.subtitle{font:15px Arial,sans-serif;fill:#74899b}.card{fill:#fff;stroke:#dce6ed;stroke-width:2;rx:17}.head{font:700 15px Arial,sans-serif;fill:#21445e}.body{font:12px Arial,sans-serif;fill:#668096}.label{font:700 12px Arial,sans-serif;letter-spacing:1.3px;fill:#8194a4}.arrow{stroke:#628099;stroke-width:2.2;fill:none;marker-end:url(#arrow)}.dash{fill:none;stroke:#80a3bd;stroke-width:2;stroke-dasharray:9 8;rx:22}.pill{fill:#fff1df;rx:10}.pilltext{font:700 11px Arial,sans-serif;fill:#ac6a26;letter-spacing:.8px}.teal{fill:#e8f6f3;stroke:#cbe9e1;stroke-width:2;rx:16}.blue{fill:#eaf3fb;stroke:#d3e4f2;stroke-width:2;rx:16}.dark{fill:url(#blue);rx:17}.whitehead{font:700 15px Arial,sans-serif;fill:#fff}.whitebody{font:12px Arial,sans-serif;fill:#e2f2f5}.small{font:11px Arial,sans-serif;fill:#91a3b1}
+    </style>
+  </defs>
+  <rect class="bg" width="1600" height="960"/>
+  <text class="title" x="48" y="62">GlucoTwin AI 2.0 · System Architecture</text>
+  <text class="subtitle" x="50" y="92">Patient-specific data twin · synthetic-only research prototype · not for clinical use</text>
+  <rect class="pill" x="1334" y="43" width="218" height="29"/><text class="pilltext" x="1443" y="62" text-anchor="middle">SYNTHETIC DATA INCLUDED</text>
+
+  <text class="label" x="38" y="139">ONLINE DATA, PREDICTION, STORAGE, AND DASHBOARD FLOW</text>
+  <rect class="dash" x="365" y="153" width="1190" height="220"/>
+  <text class="small" x="382" y="370">LOCAL DATA + MODEL PROCESSING SCOPE</text>
+
+  <rect class="card" x="32" y="177" width="154" height="176"/>
+  <text class="head" x="47" y="211">Data streams</text>
+  <text class="body" x="47" y="244">Historical EHR</text><text class="body" x="47" y="267">Wearable / IoT</text>
+  <text class="body" x="47" y="290">Glucose · heart rate</text><text class="body" x="47" y="313">Sleep · activity</text>
+  <text class="small" x="47" y="336">Synthetic rows labelled</text>
+
+  <rect class="blue" x="205" y="177" width="154" height="176"/>
+  <text class="head" x="220" y="211">Validation</text>
+  <text class="body" x="220" y="244">Pydantic ranges</text><text class="body" x="220" y="267">Units + timestamps</text>
+  <text class="body" x="220" y="290">Timezone required</text><text class="body" x="220" y="313">Duplicate checks</text>
+
+  <rect class="teal" x="378" y="177" width="154" height="176"/>
+  <text class="head" x="393" y="211">Patient twin</text>
+  <text class="body" x="393" y="244">Anonymous profile</text><text class="body" x="393" y="267">Historical record</text>
+  <text class="body" x="393" y="290">Current observations</text><text class="body" x="393" y="313">Synthetic marker kept</text>
+
+  <rect class="blue" x="551" y="177" width="154" height="176"/>
+  <text class="head" x="566" y="211">Temporal features</text>
+  <text class="body" x="566" y="244">Past-only lags</text><text class="body" x="566" y="267">Rolling summaries</text>
+  <text class="body" x="566" y="290">Optional context</text><text class="body" x="566" y="313">Training imputation</text>
+
+  <rect class="dark" x="724" y="177" width="154" height="176"/>
+  <text class="whitehead" x="739" y="211">ML prediction</text>
+  <text class="whitebody" x="739" y="244">Saved model pipeline</text><text class="whitebody" x="739" y="267">120-minute event</text>
+  <text class="whitebody" x="739" y="290">Patient-group split</text><text class="whitebody" x="739" y="313">Raw score only</text>
+
+  <rect class="teal" x="897" y="177" width="154" height="176"/>
+  <text class="head" x="912" y="211">Explainability</text>
+  <text class="body" x="912" y="244">Observed signals</text><text class="body" x="912" y="267">Global feature ranks</text>
+  <text class="body" x="912" y="290">Quality warnings</text><text class="body" x="912" y="313">Not patient-causal</text>
+
+  <rect class="card" x="1070" y="177" width="154" height="176"/>
+  <text class="head" x="1085" y="211">FastAPI</text>
+  <text class="body" x="1085" y="244">Validated JSON</text><text class="body" x="1085" y="267">Health + dashboard</text>
+  <text class="body" x="1085" y="290">Prediction API</text><text class="body" x="1085" y="313">OpenAPI at /docs</text>
+
+  <rect class="blue" x="1243" y="177" width="154" height="176"/>
+  <text class="head" x="1258" y="211">SQLite</text>
+  <text class="body" x="1258" y="244">Patient profiles</text><text class="body" x="1258" y="267">Sensor readings</text>
+  <text class="body" x="1258" y="290">Saved predictions</text><text class="body" x="1258" y="313">Local persistence</text>
+
+  <rect class="card" x="1416" y="177" width="154" height="176"/>
+  <text class="head" x="1431" y="211">Dashboard</text>
+  <text class="body" x="1431" y="244">Responsive UI</text><text class="body" x="1431" y="267">Measured glucose</text>
+  <text class="body" x="1431" y="290">Source timeline</text><text class="body" x="1431" y="313">Score + warnings</text>
+
+  <path class="arrow" d="M186 265H198"/><path class="arrow" d="M359 265H371"/><path class="arrow" d="M532 265H544"/>
+  <path class="arrow" d="M705 265H717"/><path class="arrow" d="M878 265H890"/><path class="arrow" d="M1051 265H1063"/>
+  <path class="arrow" d="M1224 265H1236"/><path class="arrow" d="M1397 265H1409"/>
+
+  <text class="label" x="48" y="432">SAFETY, PRIVACY, AND SCOPE BOUNDARIES</text>
+  <rect class="card" x="42" y="450" width="1516" height="126"/>
+  <text class="head" x="68" y="486">Prototype safeguards</text>
+  <text class="body" x="68" y="516">Synthetic examples are visibly labelled · no names or contact fields · SQL is parameterized · CORS is opt-in by exact origin</text>
+  <text class="body" x="68" y="542">No authentication, production security, external sensor connection, clinical validation, regulatory review, or care use</text>
+  <text class="head" x="852" y="486">Model output boundary</text>
+  <text class="body" x="852" y="516">Uncalibrated score and no confidence interval · global feature ranking is associative, not causal</text>
+  <text class="body" x="852" y="542">180 mg/dL within 120 minutes is a prototype label, not a universal medical standard</text>
+
+  <text class="label" x="48" y="629">OFFLINE TRAINING AND EVALUATION · EXPLICIT COMMAND</text>
+  <rect class="card" x="50" y="650" width="277" height="164"/>
+  <text class="head" x="70" y="686">Synthetic generator</text><text class="body" x="70" y="718">36 profiles · 14 days</text>
+  <text class="body" x="70" y="744">15-minute rows · seed 20260626</text><text class="body" x="70" y="770">Every generated row marked synthetic</text>
+  <rect class="blue" x="351" y="650" width="277" height="164"/>
+  <text class="head" x="371" y="686">Target and features</text><text class="body" x="371" y="718">Past-only inputs · next 8 readings</text>
+  <text class="body" x="371" y="744">120-minute event label</text><text class="body" x="371" y="770">Incomplete future windows removed</text>
+  <rect class="blue" x="652" y="650" width="277" height="164"/>
+  <text class="head" x="672" y="686">Patient-level split</text><text class="body" x="672" y="718">Train · validation · test groups</text>
+  <text class="body" x="672" y="744">No patient crosses a partition</text><text class="body" x="672" y="770">Fixed split seed</text>
+  <rect class="blue" x="953" y="650" width="277" height="164"/>
+  <text class="head" x="973" y="686">Compare and select</text><text class="body" x="973" y="718">Prior baseline + Logistic Regression</text>
+  <text class="body" x="973" y="744">Random Forest candidate</text><text class="body" x="973" y="770">Select on validation PR-AUC</text>
+  <rect class="teal" x="1254" y="650" width="277" height="164"/>
+  <text class="head" x="1274" y="686">Saved artifacts</text><text class="body" x="1274" y="718">Model pipeline + evaluation JSON</text>
+  <text class="body" x="1274" y="744">Test metrics and confusion matrix</text><text class="body" x="1274" y="770">Synthetic limitations recorded</text>
+  <path class="arrow" d="M327 732H344"/><path class="arrow" d="M628 732H645"/><path class="arrow" d="M929 732H946"/><path class="arrow" d="M1230 732H1247"/>
+  <text class="small" x="50" y="846">Training is explicit and does not seed demo patients. The model and report can be regenerated from the fixed-seed synthetic dataset.</text>
+  <text class="small" x="48" y="928">GlucoTwin AI 2.0 · Editable SVG source · Synthetic data only · Research prototype, not for clinical use</text>
+</svg>
