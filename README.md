@@ -3,224 +3,367 @@ GlucoTwin AI 2.0 — Personalized Diabetes Digital Twin
 Happiest Health Digital Twin Challenge 2026
 Institution: Muthayammal Engineering College (Autonomous), Tamil Nadu, India
 Project Lead: SILAMBARASAN C
-Project Type: Healthcare AI Research Prototype
+Project Category: Healthcare AI · Digital Twin · Machine Learning
 
-GlucoTwin AI 2.0 is an experimental digital-twin research prototype that connects anonymous patient profiles with timestamped glucose and wearable observations. It demonstrates time-series feature engineering, a machine-learning pipeline, a FastAPI backend, SQLite persistence, and a browser-based dashboard to estimate whether glucose may cross a defined threshold within the next two hours.
+<p align="center">
+  <strong>Exploring Personalized Glucose-Risk Estimation Through Digital-Twin Concepts</strong>
+</p>---
 
-«Important safety notice: GlucoTwin AI 2.0 is not a medical device and has not been clinically validated. It does not diagnose diabetes, recommend treatment, or support clinical decision-making. The included data is synthetic, and model scores are not calibrated probabilities.»
+🎥 Project Demonstration Video
+
+Video presentation: "Watch GlucoTwin AI 2.0 on Google Drive" (https://drive.google.com/file/d/170ai6QFzbJGbxn-ZhZommDHR4dnYxPFQ/view?usp=drivesdk)
+
+The video presents the project concept, proposed system architecture, technology stack, synthetic-data workflow, machine-learning methodology, evaluation results, prototype interface, limitations, and future scope.
+
+If the video does not open, check the Google Drive sharing permission. Set access to Anyone with the link — Viewer if permitted by the competition's submission rules.
+
+«Video status: The link has been provided by the project owner. Confirm that the video plays, its duration satisfies the official minimum requirement, and reviewers can access it before final submission.»
 
 ---
 
-Table of Contents
+⚠️ Safety Disclaimer
 
-- "Project Overview" (#project-overview)
-- "Problem Statement" (#problem-statement)
-- "Proposed Solution" (#proposed-solution)
-- "Team Details" (#team-details)
-- "Institutional Innovation and IIC" (#institutional-innovation-and-iic)
-- "Key Features" (#key-features)
-- "System Architecture" (#system-architecture)
-- "Technology Stack" (#technology-stack)
-- "Synthetic Dataset" (#synthetic-dataset)
-- "Prediction Methodology" (#prediction-methodology)
-- "Model Evaluation" (#model-evaluation)
-- "Installation and Setup" (#installation-and-setup)
-- "API Documentation" (#api-documentation)
-- "Testing" (#testing)
-- "Privacy, Security and Limitations" (#privacy-security-and-limitations)
-- "Deployment" (#deployment)
-- "Competition Submission Materials" (#competition-submission-materials)
-- "Future Scope" (#future-scope)
-- "License" (#license)
+GlucoTwin AI 2.0 is an experimental research and educational software prototype. It is not a medical device and has not been clinically validated.
 
-Project Overview
+- It does not diagnose diabetes or other medical conditions.
+- It does not provide treatment, medication, insulin, or dietary recommendations.
+- Its model scores are not calibrated clinical probabilities.
+- The included demonstration records are synthetic, not real-patient measurements.
+- It must not be used to make healthcare decisions.
 
-Glucose levels can vary over time in association with meals, physical activity, sleep, and other factors. This project explores how a software-based digital twin can organize historical observations and estimate a narrowly defined future glucose event.
+The reported machine-learning metrics describe experiments on synthetic data only. They do not establish clinical accuracy, patient benefit, or real-world generalisation.
 
-GlucoTwin AI 2.0 combines:
+---
 
-1. Anonymous patient-profile management.
-2. Timestamped glucose and wearable observations.
-3. Historical time-series feature engineering.
-4. A supervised machine-learning pipeline.
-5. A FastAPI prediction service.
-6. SQLite-based local persistence.
-7. A responsive dashboard for exploring data and experimental outputs.
+📌 Table of Contents
 
-The project is intended for software demonstration, technical evaluation, and research exploration. It does not claim clinical effectiveness or improved patient outcomes.
+1. "Project Overview" (#-project-overview)
+2. "Problem Statement" (#-problem-statement)
+3. "Proposed Solution" (#-proposed-solution)
+4. "Objectives" (#-objectives)
+5. "Team Details" (#-team-details)
+6. "Institutional Innovation and IIC" (#-institutional-innovation-and-iic)
+7. "Key Features" (#-key-features)
+8. "System Architecture" (#-system-architecture)
+9. "Technology Stack" (#-technology-stack)
+10. "Synthetic Dataset" (#-synthetic-dataset)
+11. "Prediction Methodology" (#-prediction-methodology)
+12. "Model Evaluation" (#-model-evaluation)
+13. "Repository Structure" (#-repository-structure)
+14. "Installation and Setup" (#-installation-and-setup)
+15. "API Documentation" (#-api-documentation)
+16. "Testing" (#-testing)
+17. "Privacy, Security and Limitations" (#-privacy-security-and-limitations)
+18. "Deployment" (#-deployment)
+19. "Competition Submission Materials" (#-competition-submission-materials)
+20. "Future Scope" (#-future-scope)
+21. "License" (#-license)
+22. "Acknowledgements" (#-acknowledgements)
 
-Problem Statement
+---
 
-Traditional retrospective reports summarize historical measurements but may not demonstrate how an individual's data could be used in a forward-looking prediction workflow.
+🚀 Project Overview
 
-The challenge explored by this prototype is:
+GlucoTwin AI 2.0 is a research-oriented digital-twin prototype that explores how anonymous patient profiles, historical glucose measurements, timestamped observations, and selected wearable-related data can be combined into a machine-learning workflow.
 
-How can historical health context and timestamped glucose observations be organized into a transparent digital-twin workflow that estimates a defined future glucose event while making data quality, model limitations, and safety constraints visible?
+The prototype is designed to demonstrate the technical process of organising historical observations and estimating whether glucose may cross a defined threshold during a future two-hour period.
 
-Proposed Solution
+The system combines:
 
-GlucoTwin AI 2.0 demonstrates a workflow that:
+- A patient-profile and time-series data model.
+- Synthetic glucose and wearable-observation generation.
+- Historical feature engineering.
+- A scikit-learn machine-learning pipeline.
+- A FastAPI backend.
+- SQLite local persistence.
+- A responsive HTML, CSS, and JavaScript dashboard.
+- API documentation and automated tests.
+- Technical documentation and competition presentation materials.
 
-- Stores anonymous profiles and timestamped observations.
-- Validates incoming measurements and timestamps.
-- Extracts features using information available at prediction time.
-- Trains and evaluates machine-learning candidates using patient-grouped partitions.
-- Exposes experimental predictions through a REST API.
-- Displays historical observations, model status, quality warnings, and evaluation results through a browser dashboard.
+The project focuses on software architecture, reproducibility, data quality, and responsible interpretation of experimental model outputs.
 
-All included demo observations are synthetic. The system does not connect to live glucose sensors or a clinical information system.
+No improvement in patient outcomes is claimed.
 
-Team Details
+🎯 Problem Statement
+
+Glucose measurements can change over time in association with meals, physical activity, sleep, and other factors.
+
+Historical measurements provide information about previous observations, but a software prototype can also explore how timestamped data and available context may be organised into a forward-looking prediction workflow.
+
+The technical problem addressed by this project is:
+
+How can historical glucose observations and selected health-context features be processed through a transparent digital-twin architecture to estimate a defined future glucose event while making data-quality and model limitations visible?
+
+Important technical considerations include:
+
+- Consistent timestamp handling.
+- Missing and irregular observations.
+- Prevention of future-data leakage.
+- Separation of training, validation, and test data.
+- Interpretation of precision, recall, and other evaluation metrics.
+- Clear communication of synthetic-data and clinical-validation limitations.
+
+💡 Proposed Solution
+
+GlucoTwin AI 2.0 demonstrates a pipeline that:
+
+1. Creates or receives an anonymous patient profile.
+2. Stores timestamped observations.
+3. Validates incoming data.
+4. Processes historical observations into model features.
+5. Uses a trained machine-learning model to estimate a defined future event.
+6. Returns an experimental result through an API.
+7. Displays available data and model information in a browser dashboard.
+8. Communicates data-quality warnings and safety limitations.
+
+The current research configuration uses generated synthetic observations. A live glucose-sensor integration or clinical data connection is not claimed.
+
+🎯 Objectives
+
+- Demonstrate a software-based healthcare digital-twin concept.
+- Connect anonymous profiles with timestamped time-series observations.
+- Explore historical feature engineering for a future-event prediction task.
+- Compare machine-learning candidates using a documented evaluation workflow.
+- Provide an API for profile, observation, and prediction operations.
+- Visualise historical observations through a browser interface.
+- Document synthetic-data assumptions, privacy limitations, and future research requirements.
+
+---
+
+👥 Team Details
 
 Role| Details
 Project Lead / Team Leader| SILAMBARASAN C
 Team Member| M. Sri Haritha — Data Analyst
 Institution| Muthayammal Engineering College (Autonomous)
-Department / Programme| Artificial Intelligence and Data Science
+Programme| Artificial Intelligence and Data Science
 Competition| Happiest Health Digital Twin Challenge 2026
 Faculty Mentor| Not listed; add only after confirmation
-Project Contact| Use an approved contact address or the project lead's public profile
+Project Contact| Use an approved public project contact
 
-Team note: Confirm each member's contribution and role before final submission. If M. Sri Haritha is not a member of this specific project team, remove that entry rather than publishing an inaccurate team list.
+Team verification: Keep M. Sri Haritha listed only if they are a confirmed member of this specific project team. Ensure that each member's role accurately reflects their contribution. Do not invent mentors, advisors, partnerships, or team members.
 
-Institutional Innovation and IIC
+---
 
-GlucoTwin AI 2.0 is developed in the academic context of Muthayammal Engineering College (Autonomous), Kakkaveri, Rasipuram, Namakkal District, Tamil Nadu, India.
+🏫 Institutional Innovation and IIC
 
-The college maintains an official Institution's Innovation Council (IIC) webpage:
+GlucoTwin AI 2.0 is developed in the academic context of Muthayammal Engineering College (Autonomous), located at Kakkaveri, Rasipuram, Namakkal District, Tamil Nadu, India.
 
-- College website: https://mec.edu.in/
-- Official IIC page: https://mec.edu.in/institutions-innovation-council/establishment-of-institutions-iic/
-- College address: Kakkaveri, Rasipuram, Namakkal District, Tamil Nadu – 637408, India.
+Institutional links
 
-The college's published institutional information describes innovation, research, design thinking, entrepreneurship, and student project development as part of its broader academic activities.
+- Official college website: https://mec.edu.in/
+- Institution's Innovation Council (IIC) page: https://mec.edu.in/institutions-innovation-council/establishment-of-institutions-iic/
 
-This section identifies the institution's publicly documented innovation ecosystem. It does not claim that GlucoTwin AI 2.0 has received IIC incubation, funding, mentorship, approval, or endorsement. Add those details only if formally confirmed by the institution.
+The Institution's Innovation Council is part of the college's publicly documented innovation-related institutional ecosystem.
 
-Key Features
+This project is presented as a student research prototype associated with the academic institution. The inclusion of the IIC link provides institutional context; it does not imply that the council has incubated, funded, mentored, approved, or officially endorsed GlucoTwin AI 2.0.
 
-- Digital-twin data model: Links anonymous profiles with timestamped observations.
-- Time-series processing: Derives historical glucose and wearable features.
-- Experimental risk estimation: Predicts a defined future glucose-threshold event.
-- FastAPI backend: Provides validated REST endpoints and interactive API documentation.
-- SQLite persistence: Stores profiles, readings, and prediction outputs locally.
-- Responsive dashboard: Displays profile information, historical measurements, and model status.
-- Data-quality warnings: Makes timestamp freshness and sampling-cadence limitations visible.
-- Model evaluation: Reports validation and held-out test metrics.
-- Automated tests: Covers API workflows, validation, persistence, and model-related behavior.
-- Reproducible synthetic data: Uses a fixed generation seed for the documented example.
+Any formal incubation, mentorship, or institutional support should be added only when independently confirmed.
 
-System Architecture
+---
 
-The prototype follows this high-level workflow:
+✨ Key Features
 
-Synthetic Patient Profiles and Time-Series Readings
+1. Anonymous Patient Profiles
+
+Organises profile information under anonymous identifiers rather than requiring names or other direct personal identifiers in the demonstration.
+
+2. Timestamped Observations
+
+Supports the intended workflow for storing glucose readings and selected wearable-related measurements over time.
+
+3. Historical Feature Engineering
+
+Derives features from observations available at or before the prediction timestamp.
+
+4. Experimental Prediction
+
+Uses a trained machine-learning candidate to estimate whether a defined future glucose event occurs within the intended horizon.
+
+5. FastAPI Backend
+
+Provides REST endpoints for the intended profile, observation, dashboard, and prediction workflows.
+
+6. SQLite Persistence
+
+Stores demonstration profiles, readings, and prediction outputs locally.
+
+7. Browser Dashboard
+
+Uses HTML, CSS, JavaScript, and Chart.js to present historical measurements and available model information.
+
+8. Data-Quality Awareness
+
+The intended workflow includes timestamp freshness and sampling-cadence checks so that weak inference contexts can be identified.
+
+9. Model Evaluation
+
+Documents a baseline comparison, validation-based model selection, and held-out synthetic test metrics.
+
+10. Technical Documentation
+
+Includes intended architecture, evaluation, privacy, testing, and competition presentation materials.
+
+---
+
+🏗️ System Architecture
+
+The high-level workflow is:
+
+Synthetic Patient Profiles and Time-Series Observations
                          |
                          v
-              Input Validation
+               Input Validation
                          |
                          v
-              SQLite Data Storage
+               SQLite Data Storage
                          |
                          v
-          Historical Feature Engineering
+        Historical Feature Engineering
                          |
                          v
-           Trained ML Prediction Model
+         Trained Machine-Learning Model
                          |
                          v
-                FastAPI Service
+               FastAPI Prediction API
                          |
                          v
              Responsive Web Dashboard
                          |
                          v
-        Experimental Score and Quality Warnings
+       Experimental Output and Quality Warnings
 
-The model-training workflow is separate from the online prediction workflow. Patient identifiers are divided into training, validation, and test groups to reduce leakage between partitions.
+Architecture components
 
-Architecture diagram: "docs/architecture_diagram.pdf"
-Editable architecture diagram: "docs/architecture_diagram.svg"
+Component| Responsibility
+Data generator| Produces synthetic profiles and observations
+Validation layer| Checks fields, values, and timestamps
+SQLite database| Persists local demonstration records
+Feature pipeline| Derives historical model inputs
+Training pipeline| Trains and evaluates candidate models
+Prediction service| Produces experimental model output
+FastAPI| Exposes backend functionality through endpoints
+Browser dashboard| Presents observations and available results
 
-Technology Stack
+Architecture diagram
 
-Component| Technologies
-Programming language| Python
-Backend API| FastAPI, Pydantic, Uvicorn
-Database| SQLite
-Data processing| Pandas, NumPy
-Machine learning| scikit-learn
-Model artifacts| joblib
-Frontend| HTML, CSS, JavaScript
-Charts| Chart.js
-Testing| pytest, FastAPI TestClient
-Documentation| Markdown, OpenAPI / Swagger
-Presentation generation| ReportLab, python-pptx
+- PDF: "docs/architecture_diagram.pdf"
+- Editable SVG: "docs/architecture_diagram.svg"
 
-Synthetic Dataset
+Confirm that these paths match the actual files in the repository before relying on the links.
 
-The project generator is configured to create:
+---
 
-- 36 synthetic profiles
-- 14 days per profile
-- 96 observations per day
-- 48,384 total observations
-- 15-minute sampling intervals
-- Generation seed: "20260626"
+🛠️ Technology Stack
 
-The generated timeline begins at "2025-01-01T00:00:00Z". These records are historical synthetic examples, not live readings.
+Technology| Purpose
+Python| Backend, data processing, and ML
+FastAPI| REST API framework
+Pydantic| Request and data validation
+Uvicorn| ASGI application server
+SQLite| Local relational data storage
+Pandas| Tabular and time-series processing
+NumPy| Numerical computation
+scikit-learn| Model training and evaluation
+joblib| Model artifact persistence
+HTML| Dashboard structure
+CSS| Styling and responsive layout
+JavaScript| Frontend behaviour and API requests
+Chart.js| Time-series visualisation
+pytest| Automated testing
+FastAPI TestClient| API testing
+ReportLab| PDF asset generation, if configured
+python-pptx| PowerPoint generation, if configured
 
-Generated variables include glucose, age, BMI, HbA1c, diabetes duration, heart rate, sleep duration, and step counts. The generator uses simplified assumptions for circadian patterns, meal-response pulses, activity, and noise. It is not a validated physiological simulator.
+The core local workflow does not require a paid AI API or external generative-AI credentials.
 
-No real-patient dataset is included in the project.
+---
 
-Prediction Methodology
+📊 Synthetic Dataset
+
+The documented generator configuration is designed to produce:
+
+Parameter| Value
+Synthetic profiles| 36
+Days per profile| 14
+Observations per day| 96
+Sampling interval| 15 minutes
+Total observations| 48,384
+Random seed| "20260626"
+Timeline start| "2025-01-01T00:00:00Z"
+
+The generated variables include:
+
+- Glucose.
+- Age.
+- Body mass index.
+- HbA1c.
+- Diabetes duration.
+- Heart rate.
+- Sleep duration.
+- Step counts.
+
+The generator uses simplified assumptions for circadian variation, meal-response pulses, activity patterns, demographics, and random noise.
+
+These assumptions exist for software development and testing. They are not a validated physiological simulator.
+
+All generated records must be identified as synthetic. The timeline is historical and must not be presented as live sensor data.
+
+No public or real-patient dataset is claimed as part of the included demonstration.
+
+---
+
+🧠 Prediction Methodology
 
 Prediction target
 
-The model estimates whether at least one glucose observation is 180 mg/dL or higher among the next eight 15-minute measurements, representing a nominal 120-minute horizon when the sampling cadence is regular.
+The experimental target is:
 
-This is a project-defined experimental label, not a universal clinical threshold or a treatment recommendation.
+«At least one glucose measurement is greater than or equal to 180 mg/dL among the next eight 15-minute measurements, representing a nominal 120-minute horizon when sampling is regular.»
 
-Feature engineering
+This is a project-defined label for experimentation. It is not a universal clinical standard or a treatment recommendation.
 
-Features may include:
+Historical features
+
+The documented feature set may include:
 
 - Current glucose.
-- Glucose change over 15 and 60 minutes.
-- Mean glucose over the preceding 60 minutes.
-- Glucose standard deviation over the preceding 120 minutes.
-- Latest available heart rate and sleep duration.
-- Steps recorded over the preceding 60 minutes.
-- Available BMI and HbA1c context.
+- Glucose change over 15 minutes.
+- Glucose change over 60 minutes.
+- Mean glucose over the previous 60 minutes.
+- Glucose standard deviation over the previous 120 minutes.
+- Latest available heart rate.
+- Latest available sleep duration.
+- Steps over the previous 60 minutes.
+- Available BMI and HbA1c.
 - Time of day.
 
-Only information available at or before prediction time is intended to be used as a feature. Future observations are used to create training labels, not prediction-time inputs. Incomplete future horizons are excluded from training.
+Only information available at or before prediction time should be used as model input.
 
-Model development
+Future glucose observations are used to generate training labels rather than being supplied as prediction-time features. Incomplete future horizons are excluded from training.
 
-The documented pipeline compares:
+The documented pipeline rejects irregular 15-minute training cadence instead of silently treating eight irregular observations as an exact two-hour interval.
+
+Candidate models
 
 - Majority/prior baseline.
 - Logistic Regression.
 - Random Forest.
 
-The candidates use scikit-learn pipelines with training-fitted median imputation and balanced class weights. Model selection uses validation PR-AUC. The selected model is then evaluated on a held-out group of synthetic patients.
+The documented pipeline uses training-fitted median imputation and balanced class weights. Candidate selection is based on validation PR-AUC, followed by evaluation on a held-out group of synthetic profiles.
 
-Irregular 15-minute sampling intervals are rejected by the documented training workflow rather than automatically being treated as a regular two-hour horizon.
+---
 
-Model Evaluation
+📈 Model Evaluation
 
-The following values are reported by the project's documented synthetic-data run dated 20 October 2026. They are not evidence of real-world clinical performance.
+The following metrics are reported in the project's supplied documentation for a synthetic-data run dated 20 October 2026. They must be checked against the actual generated evaluation report before being treated as verified results.
 
 Validation results
 
-Candidate| Validation PR-AUC
-Majority/prior baseline| 0.2630
-Logistic Regression| 0.6577
-Random Forest| 0.8548
-
-Random Forest was selected using validation PR-AUC.
+Candidate| Validation PR-AUC| Role
+Majority/prior baseline| 0.2630| Reference baseline
+Logistic Regression| 0.6577| Candidate
+Random Forest| 0.8548| Selected candidate
 
 Held-out synthetic test results
 
@@ -234,192 +377,181 @@ Test observations| 10,688
 Held-out synthetic profiles| 8
 Confusion matrix "[[TN, FP], [FN, TP]]"| "[[8106, 355], [982, 1245]]"
 
-These figures must be checked against the actual generated evaluation report before they are used in a competition presentation.
+Interpretation
 
-Interpretation and limitations
+These results are specific to a synthetic dataset generated using one simplified process.
 
-- The results come from a simplified synthetic-data generator.
-- The held-out group contains only eight synthetic profiles.
-- Repeated measurements from the same individual are temporally correlated.
-- Precision and recall depend on the chosen score threshold.
-- PR-AUC depends on the prevalence of the defined event.
-- ROC-AUC measures ranking performance, not probability calibration.
-- No independent clinical validation, external-cohort validation, or probability calibration has been performed.
+The results do not establish expected real-world performance because:
 
-These metrics must not be described as clinically validated accuracy or expected patient outcomes.
+- Synthetic observations reflect assumptions embedded in the generator.
+- Repeated measurements within a profile are temporally correlated.
+- Only eight synthetic profiles are reported in the held-out test group.
+- Precision and recall depend on the chosen decision threshold.
+- PR-AUC depends on event prevalence.
+- ROC-AUC evaluates ranking, not probability calibration.
+- Independent clinical validation and external-cohort testing have not been performed.
 
-Installation and Setup
+The reported values must not be described as clinically validated accuracy or evidence of improved patient outcomes.
+
+---
+
+📁 Repository Structure
+
+The intended project documentation refers to a structure similar to the following. The actual repository may differ; update this tree to match the committed files.
+
+GlucoTwin-AI-2.0/
+├── README.md
+├── requirements.txt
+├── run.py
+├── app/
+│   ├── main.py
+│   ├── database.py
+│   ├── patients.py
+│   ├── readings.py
+│   ├── predictions.py
+│   ├── prediction_service.py
+│   ├── schemas.py
+│   ├── digital_twin.py
+│   ├── data_processing.py
+│   ├── features.py
+│   ├── risk_explanations.py
+│   ├── seed_demo.py
+│   ├── ml/
+│   │   ├── generate_synthetic_data.py
+│   │   ├── train.py
+│   │   └── evaluate.py
+│   └── static/
+│       ├── index.html
+│       ├── style.css
+│       └── js/
+│           ├── app.js
+│           └── config.js
+├── data/
+├── models/
+├── docs/
+│   ├── architecture_diagram.pdf
+│   ├── architecture_diagram.svg
+│   ├── presentation.pdf
+│   ├── presentation.pptx
+│   ├── presentation_outline.md
+│   ├── demo_script.md
+│   ├── model_card.md
+│   ├── data_dictionary.md
+│   ├── limitations.md
+│   └── dashboard_synthetic.png
+├── tests/
+└── LICENSE
+
+Do not create empty folders merely to match this example. Keep the repository tree consistent with the implementation that actually exists.
+
+---
+
+💻 Installation and Setup
 
 Prerequisites
 
-- Python 3.11–3.13, subject to the compatibility of the pinned dependencies.
+- Python 3.11–3.13, subject to dependency compatibility.
 - Git.
 - A terminal or command prompt.
 
-Clone the repository and enter its directory:
+1. Clone the repository
+
+Use the verified public repository URL. The URL below is the intended address and should be used only after confirming that the repository exists and is publicly accessible.
 
 git clone https://github.com/silambarasanc199-jpg/Glucotwin-ai-2.0.git
 cd Glucotwin-ai-2.0
 
-Create a virtual environment:
+2. Create a virtual environment
 
 python -m venv .venv
 
-Activate it on Windows PowerShell:
+Windows PowerShell:
 
 .venv\Scripts\Activate.ps1
 
-On macOS or Linux:
+macOS or Linux:
 
 source .venv/bin/activate
 
-Install dependencies:
+3. Install dependencies
 
 python -m pip install -r requirements.txt
 
-Generate data and train the model
+4. Generate synthetic data and train the model
 
-The commands below match the intended package structure. Run them only after confirming that the corresponding modules exist in the repository:
+The following commands match the documented intended package structure. Run them only if the corresponding modules exist in the actual repository.
 
 python -m app.ml.generate_synthetic_data
 python -m app.ml.train
 python -m app.ml.evaluate
 python -m app.seed_demo
 
-Start the server:
+5. Start the application
 
 python run.py
 
-Open the following local URLs:
+6. Open the local application
 
 - Dashboard: http://127.0.0.1:8000/
 - API documentation: http://127.0.0.1:8000/docs
 - Health check: http://127.0.0.1:8000/health
 
-If the commands fail because the repository's actual files use a different structure, update this section to match the verified implementation before publishing the final README.
+If the code uses a different package layout or entry point, update these commands based on the verified implementation.
 
-API Documentation
+Synthetic demo records should be created through the explicit seed process rather than being silently inserted on every application startup.
 
-The intended API includes the following endpoints:
+---
+
+🔌 API Documentation
+
+The documented API design includes the following routes. Verify each endpoint against the actual running application before presenting this list as a confirmed API contract.
 
 Method| Endpoint| Purpose
-GET| "/health"| Health and model/database status
-GET| "/api/dashboard/summary"| Dashboard summary
+GET| "/health"| Check application, database, and model status
+GET| "/api/dashboard/summary"| Retrieve dashboard summary
 GET| "/api/patients"| List anonymous profiles
 POST| "/api/patients"| Create a profile
 GET| "/api/patients/{patient_id}"| Retrieve a profile and summary
 GET| "/api/patients/{patient_id}/history"| Retrieve historical observations
-POST| "/api/patients/{patient_id}/readings"| Add one observation
-POST| "/api/patients/{patient_id}/readings/batch"| Import multiple observations
+POST| "/api/patients/{patient_id}/readings"| Add one timestamped reading
+POST| "/api/patients/{patient_id}/readings/batch"| Import a batch of readings
 GET| "/api/patients/{patient_id}/readings"| Retrieve recent readings
 POST| "/api/patients/{patient_id}/predict"| Generate an experimental prediction
 GET| "/api/patients/{patient_id}/predictions"| Retrieve saved predictions
-GET| "/docs"| Interactive OpenAPI / Swagger documentation
+GET| "/docs"| Open interactive Swagger documentation
 
-Confirm the implemented routes against the running API before treating this list as a verified API contract. FastAPI validation errors and prediction responses should be documented according to the actual implementation.
+Expected validation behaviour
 
-Testing
+The documented design intends to:
+
+- Reject invalid fields or timestamps.
+- Return a not-found response for unknown profiles.
+- Detect duplicate source records where supported.
+- Report a model-unavailable condition when the model is missing.
+- Include appropriate quality warnings and safety information in prediction responses.
+
+These behaviours should be confirmed through actual tests before claiming they all work.
+
+---
+
+🧪 Testing
 
 Run the test suite from the repository root:
 
 python -m pytest -q
 
-The intended test coverage includes:
+The documented test coverage includes:
 
-- API health and endpoint workflows.
+- Health and API workflow checks.
 - Profile creation and retrieval.
-- Reading validation and duplicate detection.
+- Reading validation.
 - Timestamp and measurement validation.
-- Model-missing behavior.
+- Duplicate detection.
 - Prediction response fields and history.
+- Missing-model behaviour.
 - SQLite persistence.
 - Missing optional features.
-- Forward-only training labels.
-- Rejection of irregular training cadence.
+- Future-label construction.
+- Irregular training cadence checks.
 
-Record the actual test result before submission. Do not claim all tests pass unless the command completes successfully.
-
-Privacy, Security and Limitations
-
-- Demo records are synthetic and must be clearly labelled as such.
-- Do not upload identifiable or confidential patient information.
-- Anonymous identifiers are not authentication credentials.
-- The prototype does not provide production-grade user authentication or role-based access control.
-- SQLite is intended for a local demonstration, not a regulated or high-concurrency production service.
-- Production deployment would require an appropriate security, privacy, access-control, audit, backup, and governance review.
-- Model feature rankings indicate global model associations; they do not establish individual causality.
-- Model scores are uncalibrated and must not be interpreted as clinical probabilities.
-- The system does not recommend insulin, medication, diet, or other treatment actions.
-
-Additional documentation, if present in the repository:
-
-- "docs/limitations.md"
-- "docs/model_card.md"
-- "docs/data_dictionary.md"
-
-Deployment
-
-The verified intended demonstration path is local execution. GitHub Pages can host static frontend files but cannot run the FastAPI backend, perform server-side inference, or persist a SQLite database.
-
-A hosted full-stack demo requires a Python-capable hosting service and appropriate persistent storage for the database and model artifacts.
-
-Before sharing a hosted URL, verify:
-
-1. The service starts successfully.
-2. "/health" and "/docs" are accessible.
-3. The dashboard can call the API.
-4. A prediction request completes successfully.
-5. Database and model files persist across service restarts.
-6. CORS allows only the required frontend origin.
-7. No secrets or private health information are exposed.
-
-Deployment status: No hosted deployment is claimed here. Add a public demo URL only after deployment and testing have been completed.
-
-Competition Submission Materials
-
-The following materials are intended for the Happiest Health Digital Twin Challenge 2026. Confirm that each file exists and opens correctly before submission.
-
-Material| Intended file / status
-Project README| "README.md"
-Architecture diagram| "docs/architecture_diagram.pdf"
-Editable architecture diagram| "docs/architecture_diagram.svg"
-Editable presentation| "docs/presentation.pptx"
-Presentation PDF| "docs/presentation.pdf"
-Timed demo and narration script| "docs/demo_script.md"
-Slide-by-slide outline| "docs/presentation_outline.md"
-Model card| "docs/model_card.md"
-Data dictionary| "docs/data_dictionary.md"
-Limitations and ethics| "docs/limitations.md"
-Demo video| Not recorded or uploaded; add a verified link when available
-Hosted application| Not verified; do not claim deployment
-Repository| Confirm public access and exact URL before submission
-
-Official challenge information: https://unstop.com/hackathons/crp-digital-twin-challenge-2026-happiest-health-1757873
-
-Recheck the official challenge page for current submission rules and deadlines. A README or presentation does not replace any required video, repository, or submission form.
-
-Future Scope
-
-Potential research directions include:
-
-- Evaluating appropriately licensed, de-identified datasets.
-- Independent validation on external cohorts.
-- Probability calibration and uncertainty analysis.
-- Comparison with temporal and patient-specific baselines.
-- Investigation of missingness and subgroup performance.
-- Review of data quality and sampling assumptions.
-- Appropriate clinical, ethics, and regulatory review.
-- Secure authentication, authorization, audit logs, and production-grade data governance.
-
-These are future goals, not completed capabilities.
-
-License
-
-This project is intended to use the MIT License. Confirm that the repository contains the actual "LICENSE" file before claiming that the license is in effect.
-
----
-
-GlucoTwin AI 2.0
-Exploring personalized glucose-risk estimation through digital-twin concepts, time-series data, and machine learning.
-
-Built as a student research prototype at Muthayammal Engineering College for the Happiest Health Digital Twin Challenge 2026.
+Record the actual test result before submitting the project. Do not claim that all tests pass unless the test command 
